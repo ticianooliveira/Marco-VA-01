@@ -1,11 +1,10 @@
 import re
 
 def validar_cpf(cpf: str) -> bool:
-    """Valida um CPF brasileiro."""
-    cpf = re.sub(r'\D', '', cpf)  # Remove caracteres não numéricos
+    cpf = re.sub(r'\D', '', cpf)
 
     if len(cpf) != 11 or cpf == cpf[0] * 11:
-        return False  # CPF inválido se tiver tamanho errado ou números repetidos
+        return False
 
     soma = sum(int(cpf[i]) * (10 - i) for i in range(9))
     digito1 = (soma * 10) % 11
